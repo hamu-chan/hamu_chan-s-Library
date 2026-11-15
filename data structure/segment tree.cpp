@@ -5,7 +5,7 @@ template <typename S, S(*op)(S,S), S(*e)()> struct segtree {
   void set (int p, S x) {
     p += N;
     seg[p] = x;
-    while (p >>= 1) seg[p] = op(seg[p<<1], seg[(p<<1)+1]);
+    while (p >>= 1) seg[p] = op(seg[p<<1], seg[p<<1|1]);
   }
   S get (int p) {return seg[p+N];}
   S prod (int l, int r) {
